@@ -1,0 +1,32 @@
+env:
+  - dev
+  - prod
+dir:
+  assets: "/assets"
+  assetsJade: "/assets/jade"
+  assetsImg: "/assets/img"
+  build:  "/build"
+  buildCss: "/build/css"
+  buildImg: "/bulld/img"
+webpack:
+  entry:
+    - "./src/index.jsx"
+  output:
+    path: "./build"
+    publicPath: "/"
+    filename: "bundle.js"
+  module:
+    loaders:
+      - test: /\.jsx?$/
+        exclude: /node_modules/
+        loader: "babel"
+  resolve:
+    extensions:
+      - ""
+      - ".js"
+      - ".jsx"
+  devServer:
+    hot: false
+    contentBase: "./build"
+  plugins:
+    hasHotModuleReplacement: false

@@ -1,0 +1,12 @@
+webpack:
+  entry:
+    - "./src/index.jsx"
+  module:
+    loaders:
+      - test: /\.jsx?$/
+        exclude: /node_modules/
+        loader: "babel"
+  devServer:
+    hot: false
+  plugins:
+    hasHotModuleReplacement: false
