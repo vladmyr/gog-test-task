@@ -46,9 +46,6 @@ function setPromo(state = Map(), promo = Map()) {
  * @return  {Immutable.Map}
  */
 function updatePromoItem(state = Map(), index = 0, item = Map()) {
-  let stt = state.toJS();
-  let items = state.getIn(["promo"]);
-
   switch (index < state.getIn(["promo", "items"]).size){
     case true:
       return state.mergeDeepIn(["promo", "items", index], fromJS(item));
@@ -57,6 +54,12 @@ function updatePromoItem(state = Map(), index = 0, item = Map()) {
   }
 }
 
+/**
+ * Promo reducer
+ * @param   {Immutable.Map} state
+ * @param   {Object}        action
+ * @returns {Immutable.Map}
+ */
 export default (state = Map(), action = {}) => {
   switch(action.type){
     case promoActions.INIT_PROMO:

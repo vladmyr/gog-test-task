@@ -3,8 +3,8 @@ webpack:
     - "./src/index.jsx"
   module:
     loaders:
-      - test: /\.jsx?$/
-        exclude: /node_modules/
+      - test: ".jsx?$"
+        exclude: "node_modules"
         loader: "babel"
   devServer:
     hot: false

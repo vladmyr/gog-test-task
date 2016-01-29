@@ -11,6 +11,12 @@ module.exports = function(webpackConfig){
   // replace path with absolute one
   webpackConfig.output.path = path.join(__dirname, webpackConfig.output.path);
 
+  // handle regular expressions
+  webpackConfig.module.loaders.forEach(function(loader){
+    loader.test && (loader.test = new RegExp(loader.test));
+    loader.exclude && (loader.exclude = new RegExp(loader.exclude));
+  });
+
   return {
     context: __dirname,
     entry: webpackConfig.entry,
@@ -19,5 +25,5 @@ module.exports = function(webpackConfig){
     resolve: webpackConfig.resolve,
     devServer: webpackConfig.devServer,
     plugins: plugins
-  }
+  };
 };
