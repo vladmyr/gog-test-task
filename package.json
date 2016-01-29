@@ -9,7 +9,7 @@
     "dev": "npm run build-dev && npm run server-dev",
     "build-dev": "gulp build && webpack --config webpack.config.dev.js",
     "server-dev": "webpack-dev-server --config webpack.config.dev.js",
-    "test": "mocha --compilers js:bable-core/register --require ./test/helper.js \"test/**/*.@(js|jsx)\""
+    "test": "mocha --compilers js:babel-core/register --require ./test/helper.js \"test/**/*.@(js|jsx)\""
   },
   "babel": {
     "presets": [
@@ -40,11 +40,13 @@
   },
   "dependencies": {
     "immutable": "^3.7.6",
+    "moment": "^2.11.1",
     "react": "^0.14.6",
     "react-addons-pure-render-mixin": "^0.14.6",
     "react-dom": "^0.14.6",
     "react-redux": "^4.0.6",
     "redux-thunk": "^1.0.3",
+    "underscore": "^1.8.3",
     "validator": "^4.5.2"
   }
 }
