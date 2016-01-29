@@ -43,7 +43,8 @@ export function setTimeLeft(timeLeft = 0) {
 
 /**
  * Action creator. Update promo item state
- * @param   {Object|Immutable.Map} item
+ * @param   {Number}                index
+ * @param   {Object|Immutable.Map}  item
  * @returns {Object}
  */
 export function updatePromoItem(index, item) {

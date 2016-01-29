@@ -54,6 +54,12 @@ function updatePromoItem(state = Map(), index = 0, item = Map()) {
   }
 }
 
+function log(state, action) {
+  console.warn("#### ACTION ####\n", action);
+  console.warn("#### STATE ####\n", state.toJS());
+  return state;
+}
+
 /**
  * Promo reducer
  * @param   {Immutable.Map} state
@@ -63,12 +69,12 @@ function updatePromoItem(state = Map(), index = 0, item = Map()) {
 export default (state = Map(), action = {}) => {
   switch(action.type){
     case promoActions.INIT_PROMO:
-      return initPromo(state);
+      return log(initPromo(state), action);
     case promoActions.SET_PROMO:
-      return setPromo(state, action.promo);
+      return log(setPromo(state, action.promo), action);
     case promoActions.UPDATE_PROMO_ITEM:
-      return updatePromoItem(state, action.index, action.item);
+      return log(updatePromoItem(state, action.index, action.item), action);
     default:
-      return state;
+      return log(state, action);
   }
 }

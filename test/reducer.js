@@ -39,6 +39,11 @@ const TEST_STATE = {
       icon: "drm",
       text: "Get DRM-free games with goodies"
     }],
+    goodies: [{
+      icon: "",
+      title: "",
+      description: ""
+    }],
     items: [{
       title: "Divine Divinity",
       url: "",
@@ -91,7 +96,7 @@ const TEST_STATE = {
       goodiesAmount: 9,
       isUnlocked: false
     }],
-    gols: [{
+    goals: [{
       amount: 10000,
       percentage: 0,
       img: "",
@@ -337,7 +342,7 @@ describe("promo reducer", () => {
             goodiesAmount: 9,
             isUnlocked: false
           }],
-          gols: [{
+          goals: [{
             amount: 10000,
             percentage: 0,
             img: "",

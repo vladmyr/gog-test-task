@@ -1,7 +1,7 @@
 import React from "react";
 
 export default React.createClass({
-  render: function(){
+  render() {
     return <div>
       {this.props.children}
     </div>
