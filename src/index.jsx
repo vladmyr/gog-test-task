@@ -14,7 +14,7 @@ import {PromoContainer} from "./components/promo";
 const promo = {
   title: "Divine Divinity",
   endDateTime: moment() // unix timestamp of tomorrow in seconds
-    .add(1, "day")
+    .add(2, "day")
     .set("hour", 0)
     .set("minute", 0)
     .set("second", 0)
@@ -112,7 +112,7 @@ const promo = {
   goalActiveSlider: 0,
   price: {
     total: 32,
-    min: 1.99,
+    min: 0.99,
     max: 49.99,
     current: 7.34
   }

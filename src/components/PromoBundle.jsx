@@ -35,6 +35,7 @@ export const PromoBundle = React.createClass({
       {this.props.items.map((item, key) => {
         return <PromoBundleItem item={item} key={key} />
       })}
+      <PromoBundleSlider {...this.props} />
     </div>
   }
 });

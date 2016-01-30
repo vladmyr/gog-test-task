@@ -69,14 +69,11 @@ export const PromoHeaderTimer = React.createClass({
     return this.getInitialStateValues();
   },
   componentWillReceiveProps(nextProps) {
-    console.log("componentWillReceiveProps", nextProps);
-
     nextProps.isTimerEnabled
       ? this.constructor.timerCountdown(this)
       : this.constructor.timerPause(this);
   },
   componentDidMount() {
-    console.log("componentDidMount");
     this.constructor.timerInit(this);
   },
   render() {

@@ -14,6 +14,7 @@ module.exports = function(webpackConfig){
   // handle regular expressions
   webpackConfig.module.loaders.forEach(function(loader){
     loader.test && (loader.test = new RegExp(loader.test));
+    loader.include && (loader.include = new RegExp(loader.exclude));
     loader.exclude && (loader.exclude = new RegExp(loader.exclude));
   });
 

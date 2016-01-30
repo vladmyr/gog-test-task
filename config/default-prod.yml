@@ -1,3 +1,6 @@
+gulp:
+  images:
+    optimizationLevel: 7
 webpack:
   entry:
     - "./src/index.jsx"

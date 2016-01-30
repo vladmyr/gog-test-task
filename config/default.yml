@@ -3,11 +3,17 @@ env:
   - prod
 dir:
   assets: "/assets"
+  assetsSass: "/assets/sass"
   assetsJade: "/assets/jade"
   assetsImg: "/assets/img"
   build:  "/build"
   buildCss: "/build/css"
-  buildImg: "/bulld/img"
+  buildImg: "/build/img"
+gulp:
+  compass:
+    img: "../img"
+  image:
+    optimizationLevel: 0
 webpack:
   entry:
     - "./src/index.jsx"
