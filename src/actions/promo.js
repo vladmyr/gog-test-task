@@ -2,11 +2,13 @@ import {Map, List} from "immutable";
 
 export const INIT_PROMO = "INIT_PROMO";
 export const SET_PROMO = "SET_PROMO";
-export const SET_TIME_LEFT = "SET_TIME_LEFT";
 export const SET_PRICE_CURRENT = "SET_PRICE_CURRENT";
 export const UPDATE_PROMO_ITEM = "UPDATE_PROMO_ITEM";
 export const UPDATE_SOLD_AMOUNT = "UPDATE_SOLD_AMOUNT";
 export const UI_SLIDER_BTN_CLICK = "UI_SLIDER_BTN_CLICK";
+export const TIMER_SET_DURATION = "TIMER_SET_DURATION";
+export const TIMER_COUNTDOWN = "TIMER_COUNTDOWN";
+export const TIMER_PAUSE = "TIMER_PAUSE";
 
 /**
  * Action creator. Initialize promo
@@ -27,17 +29,6 @@ export function setPromo(promo) {
   return {
     type: SET_PROMO,
     promo: promo
-  }
-}
-
-/**
- * Action creator. Set the time left
- * @param {Number} timeLeft
- */
-export function setTimeLeft(timeLeft = 0) {
-  return {
-    type: SET_TIME_LEFT,
-    timeLeft: timeLeft
   }
 }
 
@@ -88,5 +79,36 @@ export function uiSliderBtnClick(index = 0) {
   return {
     type: UI_SLIDER_BTN_CLICK,
     index: index
+  }
+}
+
+/**
+ * Action creator. Set the time left
+ * @param {Number} duration
+ */
+export function timerSetDuration(duration = 0) {
+  return {
+    type: TIMER_SET_DURATION,
+    duration: duration
+  }
+}
+
+/**
+ * Action creator. Start timer countdown
+ * @returns {Object}
+ */
+export function timerCountdown() {
+  return {
+    type: TIMER_COUNTDOWN
+  }
+}
+
+/**
+ * Action creator. Pause timer countdown
+ * @returns {Object}
+ */
+export function timerPause() {
+  return {
+    type: TIMER_PAUSE
   }
 }

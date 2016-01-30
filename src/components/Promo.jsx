@@ -7,19 +7,20 @@ import {PromoBundle} from "./PromoBundle";
 import {PromoFooter} from "./PromoFooter";
 
 export const Promo = React.createClass({
+  componentDidMount(){
+    console.log("### Promo.props ###\n", this.props, promoActions);
+  },
   render() {
     return <div className="container">
-      {this.props.promo ? <PromoHeader {...this.props.promo} /> : null}
-      {this.props.promo ? <PromoBundle {...this.props.promo} /> : null}
-      {this.props.promo ? <PromoFooter {...this.props.promo} /> : null}
+      <PromoHeader {...this.props} />
+      <PromoBundle {...this.props} />
+      <PromoFooter {...this.props} />
     </div>
   }
 });
 
 const mapStateToProps = (state) => {
-  return {
-    promo: state.get("promo").toJS()
-  };
+  return state.get("promo") && state.get("promo").toJS()
 };
 
 export const PromoContainer = connect(

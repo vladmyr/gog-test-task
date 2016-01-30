@@ -1,4 +1,5 @@
 import {List, Map, fromJS} from "immutable";
+import moment from "moment";
 
 import * as promoActions from "../actions/promo";
 
@@ -11,7 +12,8 @@ function initPromo(state = Map()){
   return fromJS({
     promo: {
       title: undefined,
-      timeLeft: 0,
+      endDateTime: moment().unix() * 1000,
+      isTimerEnabled: true,
       totalSold: 0,
       goals: [],
       goalActiveSlider: 0,
@@ -54,8 +56,19 @@ function updatePromoItem(state = Map(), index = 0, item = Map()) {
   }
 }
 
+/**
+ * Update unlocked items from promo bundle
+ * @param state
+ */
+function updateUnlockedItems(state = Map()) {
+  return state;
+}
+
+function toggleTimer(state = Map(), toggle) {
+  return state.setIn(["promo", "isTimerEnabled"], toggle);
+}
+
 function log(state, action) {
-  console.warn("#### ACTION ####\n", action);
   console.warn("#### STATE ####\n", state.toJS());
   return state;
 }
@@ -67,13 +80,19 @@ function log(state, action) {
  * @returns {Immutable.Map}
  */
 export default (state = Map(), action = {}) => {
+  console.warn("#### ACTION ####\n", action);
+
   switch(action.type){
     case promoActions.INIT_PROMO:
-      return log(initPromo(state), action);
+      return log(initPromo(state));
     case promoActions.SET_PROMO:
-      return log(setPromo(state, action.promo), action);
+      return log(setPromo(state, action.promo));
     case promoActions.UPDATE_PROMO_ITEM:
-      return log(updatePromoItem(state, action.index, action.item), action);
+      return log(updatePromoItem(state, action.index, action.item));
+    case promoActions.TIMER_COUNTDOWN:
+      return log(toggleTimer(state, true));
+    case promoActions.TIMER_PAUSE:
+      return log(toggleTimer(state, false));
     default:
       return log(state, action);
   }

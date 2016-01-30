@@ -1,15 +1,17 @@
 import {List, Map, fromJS} from "immutable";
-import moment from "moment";
 import {expect} from "chai";
+import moment from "moment";
 import * as _ from "underscore";
 
 import promoReducer from "../src/reducers/promo";
 import * as promoActions from "../src/actions/promo";
 
+const END_DATE_TIME = moment().unix() * 1000;
 const INITIAL_STATE = {
   promo: {
     title: undefined,
-    timeLeft: 0,
+    endDateTime: END_DATE_TIME,
+    isTimerEnabled: true,
     totalSold: 0,
     goals: [],
     goalActiveSlider: 0,
@@ -27,7 +29,8 @@ const INITIAL_STATE = {
 const TEST_STATE = {
   promo: {
     title: "Divine Divinity",
-    timeLeft: 26,
+    endDateTime: END_DATE_TIME,
+    isTimerEnabled: true,
     totalSold: 13853,
     features: [{
       icon: "heart",
@@ -160,14 +163,15 @@ describe("promo reducer", () => {
     it("sets properties", () => {
       const promo = {
         title: "Divinity Bundle",
-        timeLeft: 127
+        endDateTime: END_DATE_TIME,
       };
       const nextState = promoReducer(INITIAL_STATE_IMMUTABLE, promoActions.setPromo(promo));
 
       expect(nextState).to.equal(fromJS({
         promo: {
           title: "Divinity Bundle",
-          timeLeft: 127,
+          endDateTime: END_DATE_TIME,
+          isTimerEnabled: true,
           totalSold: 0,
           goals: [],
           goalActiveSlider: 0,
@@ -215,7 +219,8 @@ describe("promo reducer", () => {
       expect(nextState).to.equal(fromJS({
         promo: {
           title: undefined,
-          timeLeft: 0,
+          endDateTime: END_DATE_TIME,
+          isTimerEnabled: true,
           totalSold: 0,
           goals: [],
           goalActiveSlider: 0,
@@ -275,108 +280,7 @@ describe("promo reducer", () => {
         TEST_STATE_IMMUTABLE,
         promoActions.updatePromoItem(0, item));
 
-      expect(newState).to.equal(fromJS({
-        promo: {
-          title: "Divine Divinity",
-          timeLeft: 26,
-          totalSold: 13853,
-          features: [{
-            icon: "heart",
-            text: "Support Larian Studio"
-          }, {
-            icon: "mouse",
-            text: "Play Divinity 2: DC before release"
-          }, {
-            icon: "drm",
-            text: "Get DRM-free games with goodies"
-          }],
-          items: [{
-            title: "(*) Divine Divinity",
-            url: "(*) ",
-            img: {
-              logo: {
-                active: "",
-                inactive: ""
-              },
-              bg: ""
-            },
-            price: {
-              standard: 15.99,
-              promo: 13.99
-            },
-            languagesAmount: 7,
-            goodiesAmount: 8,
-            isUnlocked: false
-          }, {
-            title: "Beyond Divinity",
-            url: "",
-            img: {
-              logo: {
-                active: "",
-                inactive: ""
-              },
-              bg: ""
-            },
-            price: {
-              standard: 5.99,
-              promo: 7.67
-            },
-            languagesAmount: 4,
-            goodiesAmount: 6,
-            isUnlocked: false
-          }, {
-            title: "Divinity II Developer's cut",
-            url: "",
-            img: {
-              logo: {
-                active: "",
-                inactive: ""
-              },
-              bg: ""
-            },
-            price: {
-              standard: 19.99,
-              promo: 18.31
-            },
-            languagesAmount: 7,
-            goodiesAmount: 9,
-            isUnlocked: false
-          }],
-          goals: [{
-            amount: 10000,
-            percentage: 0,
-            img: "",
-            description: "... [10000] to unlock exclusive, never before seen, trailer from Divinity: Original Sin"
-          }, {
-            amount: 25000,
-            percentage: 0,
-            img: "",
-            description: "...[25000] to unlock exclusive, never before seen, trailer from Divinity: Original Sin"
-          }, {
-            amount: 50000,
-            percentage: 0,
-            img: "",
-            description: "...[50000] to unlock exclusive, never before seen, trailer from Divinity: Original Sin"
-          }, {
-            amount: 80000,
-            percentage: 0,
-            img: "",
-            description: "...[80000] to unlock exclusive, never before seen, trailer from Divinity: Original Sin"
-          }, {
-            amount: 120000,
-            percentage: 0,
-            img: "",
-            description: "...[120000] to unlock exclusive, never before seen, trailer from Divinity: Original Sin"
-          }],
-          goalActiveSlider: 0,
-          price: {
-            total: 32,
-            min: 1.99,
-            max: 49.99,
-            current: 7.34
-          }
-        }
-      }));
+      expect(newState.getIn(["promo", "items", 0])).to.equal(fromJS(item));
     });
   });
 });

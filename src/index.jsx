@@ -3,6 +3,7 @@ import ReactDOM from "react-dom";
 import {Provider} from "react-redux";
 import {Router, Route} from "react-router";
 import {Map} from "immutable";
+import moment from "moment";
 
 import configureStore from "./store/configureStore";
 import * as promoActions from "./actions/promo";
@@ -12,7 +13,13 @@ import {PromoContainer} from "./components/promo";
 // promo initial state
 const promo = {
   title: "Divine Divinity",
-  timeLeft: 26,
+  endDateTime: moment() // unix timestamp of tomorrow in seconds
+    .add(1, "day")
+    .set("hour", 0)
+    .set("minute", 0)
+    .set("second", 0)
+    .set("millisecond", 0).unix(),
+  isTimerEnabled: true,
   totalSold: 13853,
   features: [{
     icon: "heart",
