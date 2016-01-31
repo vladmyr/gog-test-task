@@ -3,8 +3,6 @@ import {connect} from "react-redux";
 
 import {PromoHeaderTimer} from "./PromoHeaderTimer";
 
-import "./header.css";
-
 export const PromoHeader = React.createClass({
   propTypes: {
     title: React.PropTypes.string.isRequired,
@@ -21,14 +19,16 @@ export const PromoHeader = React.createClass({
     isTimerEnabled: React.PropTypes.bool.isRequired
   },
   render() {
-    return <div>
-      <h3 className="text-center header-title font-light">Pay what you want for the <strong>{this.props.title}</strong> (${this.props.price.total} value!)</h3>
-      <ul className="list-unstyled list-inline">
-        {this.props.features.map((item, key) => {
-          return <li key={key}><i className={item.icon}></i>{item.text}</li>
-        })}
-      </ul>
-      <PromoHeaderTimer {...this.props} />
+    return <div className="header">
+      <h3 className="header-title text-center font-light">Pay what you want for the <strong>{this.props.title}</strong> (${this.props.price.total} value!)</h3>
+      <div className="header-info">
+        <ul className="features-list list-unstyled list-inline">
+          {this.props.features.map((item, key) => {
+            return <li key={key}><i className={"icons-feature icons-feature-" + item.icon}></i>{item.text}</li>
+          })}
+        </ul>
+        <PromoHeaderTimer {...this.props} />
+      </div>
     </div>
   }
 

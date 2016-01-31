@@ -22,7 +22,7 @@ const promo = {
   isTimerEnabled: true,
   totalSold: 13853,
   features: [{
-    icon: "heart",
+    icon: "support",
     text: "Support Larian Studio"
   }, {
     icon: "mouse",
@@ -36,8 +36,8 @@ const promo = {
     url: "",
     img: {
       logo: {
-        active: "",
-        inactive: ""
+        active: "./img/games/divine_divinity.png",
+        inactive: "./img/games/divine_divinity_inactive.png"
       },
       bg: ""
     },
@@ -47,14 +47,18 @@ const promo = {
     },
     languagesAmount: 4,
     goodiesAmount: 4,
-    isUnlocked: true
+    isUnlocked: true,
+    unlock: {
+      text: "Below average",
+      includePrice: false
+    }
   }, {
     title: "Beyond Divinity",
     url: "",
     img: {
       logo: {
-        active: "",
-        inactive: ""
+        active: "./img/games/beyond_divinity.png",
+        inactive: "./img/games/beyond_divinity_inactive.png"
       },
       bg: ""
     },
@@ -64,14 +68,18 @@ const promo = {
     },
     languagesAmount: 4,
     goodiesAmount: 6,
-    isUnlocked: false
+    isUnlocked: false,
+    unlock: {
+      text: "Above average",
+      includePrice: true
+    }
   }, {
     title: "Divinity II Developer's cut",
     url: "",
     img: {
       logo: {
-        active: "",
-        inactive: ""
+        active: "./img/games/divinity_2.png",
+        inactive: "./img/games/divinity_2_inactive.png"
       },
       bg: ""
     },
@@ -81,7 +89,36 @@ const promo = {
     },
     languagesAmount: 7,
     goodiesAmount: 9,
-    isUnlocked: false
+    isUnlocked: false,
+    unlock: {
+      text: "Top supporter",
+      includePrice: true
+    }
+  }],
+  goodies: [{
+    icon: "ost",
+    title: "4 soundtracks",
+    description: "Over 3 hours of award winning music from all 3 games."
+  }, {
+    icon: "stories",
+    title: "2 short stories",
+    description: "Prequel story for Divine Divinity and Beyond Divinity novella."
+  }, {
+    icon: "book",
+    title: "Divinity 2 - Dev Journal",
+    description: "144 pages long book, detailing story and art of Divinity 2."
+  }, {
+    icon: "film",
+    title: "Making of Divinity 2",
+    description: "40 minutes long, profesional documentary about the development of Divinity 2."
+  }, {
+    icon: "mac",
+    title: "7 wallpapers",
+    description: "Beatifull, hand crafted HD wallpepers with Divine, Beyond and Divinity 2 art"
+  }, {
+    icon: "zip",
+    title: "...and more",
+    description: "3 manuals, 56 artworks, 5 avatars, Beyond Divinity game-guide."
   }],
   goals: [{
     amount: 10000,

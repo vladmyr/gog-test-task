@@ -1,0 +1,20 @@
+@import "compass/utilities/sprites";
+
+@import "icons/*.png";
+@include all-icons-sprites;
+
+.icons-feature {
+  padding: 2px 11px 2px 12px;
+}
+
+.icons-notification {
+  display: inline-block;
+  width: 14px;
+  height: 14px;
+}
+
+.icons-goodie {
+  display: inline-block;
+  width: 27px;
+  height: 27px;
+}

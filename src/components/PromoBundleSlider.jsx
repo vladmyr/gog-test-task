@@ -3,8 +3,6 @@ import PureRenderMixin from "react-addons-pure-render-mixin";
 import validator from "validator";
 import Rcslider from "rc-slider";
 
-import "./slider.css";
-
 export const PromoBundleSlider = React.createClass({
   mixins: [PureRenderMixin],
   propTypes: {
@@ -163,7 +161,10 @@ export const PromoBundleSlider = React.createClass({
                    value={this.state.currentInput}/>
             <button className="btn btn-checkout">Checkout now</button>
           </div>
-          <span className="slider-popover-tip"><i></i>Click the price to type it in manually</span>
+          <div className="slider-popover-tip">
+            <i className="icons-notification icons-notification-info"></i>
+            <span>Click the price to type it in manually</span>
+          </div>
         </div>
       </div>
     </div>

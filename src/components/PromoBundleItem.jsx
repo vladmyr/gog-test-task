@@ -18,24 +18,41 @@ export const PromoBundleItem = React.createClass({
       }),
       goodiesAmount: React.PropTypes.number.isRequired,
       languagesAmount: React.PropTypes.number.isRequired,
-      isUnlocked: React.PropTypes.bool.isRequired
-    }).isRequired
+      isUnlocked: React.PropTypes.bool.isRequired,
+      unlock: React.PropTypes.shape({
+        text: React.PropTypes.string.isRequired,
+        includePrice: React.PropTypes.bool.isRequired
+      }).isRequired
+    }).isRequired,
+    isLast: React.PropTypes.bool.isRequired
   },
   render() {
     return <div className="product">
-      <div className="product-logo">
+      <div className="product-description">
+        <div className="product-logo">
+          <img src={this.props.item.img.logo.active} />
+        </div>
+        <div className="product-details">
+          <p className="text-center">
+            <a className="product-details__link" href="#">{this.props.item.title}</a> (normal price ${this.props.item.price.standard})
+            <br/>
+            <strong>with {this.props.item.goodiesAmount} goodies and {this.props.item.languagesAmount} language versions</strong>
+          </p>
+        </div>
+        <div className="product-unlocked text-center">
+          <i className={"icons-notification " + (this.props.item.isUnlocked ? "icons-notification-success" : "icons-notification-error") }></i>
+          <span className={this.props.item.isUnlocked ? "is-unlocked" : null}>
+            {this.props.item.unlock.text}&nbsp;
+            {this.props.item.unlock.includePrice
+              ? <strong>(from ${this.props.item.price.promo})</strong>
+              : null}
 
-      </div>
-      <div className="product-details">
-        <div className="product-details">
-          <a className="product-details__link" href="#">{this.props.item.title}</a> (normal price ${this.props.item.price.standard})
-        </div>
-        <strong>with {this.props.item.goodiesAmount} and {this.props.item.languagesAmount} language versions</strong>
-        <div className="product-details">
-          <i className="icon-checked"></i>
-          <span>{this.props.item.price.promoText}<strong>(from ${this.props.item.price.promo})</strong></span>
+          </span>
         </div>
       </div>
+      {this.props.isLast
+        ? null
+        : <div className="product-plus"></div>}
     </div>
   }
 });

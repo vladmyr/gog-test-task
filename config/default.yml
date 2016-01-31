@@ -6,12 +6,15 @@ dir:
   assetsSass: "/assets/sass"
   assetsJade: "/assets/jade"
   assetsImg: "/assets/img"
+  assetsFont: "./assets/font"
   build:  "/build"
+  devCss: "/tmp/css"
   buildCss: "/build/css"
   buildImg: "/build/img"
+  buildFont: "./build/font"
 gulp:
   compass:
-    img: "../img"
+    http_path: "/webpack-dev-server"
   image:
     optimizationLevel: 0
 webpack:

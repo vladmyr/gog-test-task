@@ -4,9 +4,12 @@
 @import "../../node_modules/bootstrap-sass/assets/stylesheets/bootstrap.scss";
 
 @import "variables";
+@import "fonts";
+@import "sprites";
 
 * {
   font-family: "Open Sans";
+  vertical-align: top;
 }
 
 *:focus {
@@ -96,9 +99,8 @@ body {
         box-shadow: none;
         background-color: rgba(0, 0, 0, 0);
         height: 32px;
-        width: 64px;
+        width: 66px;
         margin-left: 1px;
-        margin-right: 12px;
         text-align: center;
       }
     }

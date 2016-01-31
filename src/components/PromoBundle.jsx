@@ -3,8 +3,6 @@ import React from "react"
 import {PromoBundleItem} from "./PromoBundleItem";
 import {PromoBundleSlider} from "./PromoBundleSlider";
 
-import "./bundle.css";
-
 export const PromoBundle = React.createClass({
   propTypes: {
     items: React.PropTypes.arrayOf(
@@ -34,9 +32,13 @@ export const PromoBundle = React.createClass({
   },
   render() {
     return <div className="bundle-container">
-      {this.props.items.map((item, key) => {
-        return <PromoBundleItem item={item} key={key} />
-      })}
+      <div className="product-container">
+        {this.props.items.map((item, key) => {
+          return <PromoBundleItem item={item}
+                                  key={key}
+                                  isLast={key === (this.props.items.length - 1)} />
+        })}
+      </div>
       <PromoBundleSlider {...this.props} />
     </div>
   }

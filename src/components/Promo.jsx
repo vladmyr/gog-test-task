@@ -11,7 +11,7 @@ export const Promo = React.createClass({
     console.log("### Promo.props ###\n", this.props, promoActions);
   },
   render() {
-    return <div className="container">
+    return <div className="promo-container">
       <PromoHeader {...this.props} />
       <PromoBundle {...this.props} />
       <PromoFooter {...this.props} />
