@@ -1,0 +1,14 @@
+.slider-container .price {
+  width: 50px;
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 14px;
+}
+
+.slider-container .slider-popover {
+  top: 14px;
+}
+
+.slider-container .rc-slider-wrapper {
+  margin: 0 50px;
+}

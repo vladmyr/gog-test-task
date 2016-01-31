@@ -7,6 +7,8 @@ import * as _ from "underscore";
 
 import { Timer } from "../libs/timer";
 
+import "./timer.css";
+
 export const PromoHeaderTimer = React.createClass({
   mixins: [PureRenderMixin],
   propTypes: {
@@ -77,7 +79,7 @@ export const PromoHeaderTimer = React.createClass({
     this.constructor.timerInit(this);
   },
   render() {
-    return <div>
+    return <div className="timer">
       <i className="icon-time"></i><span>Only <b>{this.constructor.timerDurationHumanise(this.constructor.getDuration(this))}</b> left</span>
     </div>
   }

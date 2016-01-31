@@ -3,6 +3,8 @@ import PureRenderMixin from "react-addons-pure-render-mixin";
 import validator from "validator";
 import Rcslider from "rc-slider";
 
+import "./slider.css";
+
 export const PromoBundleSlider = React.createClass({
   mixins: [PureRenderMixin],
   propTypes: {
@@ -24,11 +26,26 @@ export const PromoBundleSlider = React.createClass({
       length: 0,
       trackLength: 0,
       points: [],
-      popover: {}
+      popover: {
+        offsetDiff: 0,
+        left: 0 //this.getPopoverOffset()
+      }
     }
   },
   getInitialState(){
     return this.getInitialStateValues();
+  },
+  getSliderLength(){
+    return this.refs.slider.getSliderLength();
+  },
+  getSliderValue(){
+    return this.refs.slider.getValue();
+  },
+  getPopoverContainerLength(){
+    return this.refs.popoverContainer.clientWidth
+  },
+  getPopoverLength(){
+    return this.refs.popover.clientWidth;
   },
   /** calculate the length of the track in pixels */
   calcTrackLengthPx(current, length){
@@ -36,7 +53,7 @@ export const PromoBundleSlider = React.createClass({
   },
   /** get human friendly price value */
   humanisePrice(price){
-    return Number(price).toFixed(2);
+    return (Math.floor(Number(price) * 100) / 100).toFixed(2);
   },
   /** check whether input value is a price */
   isPrice(input){
@@ -49,7 +66,7 @@ export const PromoBundleSlider = React.createClass({
   /** check whether price is valid */
   isValidPrice(newPrice){
     //return newPrice > this.state.min && newPrice < this.state.max;
-    return validator.isFloat(newPrice, { min: this.state.min, max: this.state.max });
+    return validator.isFloat(newPrice, {min: this.state.min, max: this.state.max});
   },
   /** check whether price is in the range and if not return closest valid value */
   inbindPrice(newPrice){
@@ -63,75 +80,92 @@ export const PromoBundleSlider = React.createClass({
       return newPrice;
     }
   },
-  onSliderChange(current, length){
-    let trackLength = this.calcTrackLengthPx(current, length);
-    console.log(arguments, trackLength);
-
-    this.setState(() => {
-      return {
-        trackLength: trackLength,
-        current: current,
-        currentInput: current,
-        length: length
-      }
-    });
+  onSliderChange(current){
+    this.handlePriceChange(current, this.humanisePrice(current));
   },
   onInputChange(e){
-    console.log("onInputChange");
-
     let self = this;
+    let current = self.isValidPrice(e.target.value)
+      ? Number(e.target.value)
+      : self.inbindPrice(e.target.value) || self.state.current;
+    let currentInput = self.isPrice(e.target.value)
+      ? e.target.value
+      : self.state.current;
 
-    self.setState(() => {
-      return {
-        current: self.isValidPrice(e.target.value)
-          ? Number(e.target.value)
-          : self.inbindPrice(e.target.value) || self.state.current,
-        currentInput: self.isPrice(e.target.value)
-          ? e.target.value
-          : self.state.current
-      }
-    })
+    self.handlePriceChange(current, currentInput);
   },
   onInputBlur(e){
-    console.log("onInputBlur");
-
     let self = this;
     let current = self.isValidPrice(e.target.value)
       ? Number(e.target.value)
       : self.inbindPrice(e.target.value);
 
-    self.setState(() => {
-      return {
-        current: current,
-        currentInput: self.humanisePrice(current)
-      }
+    self.handlePriceChange(current, self.humanisePrice(current));
+  },
+  handlePriceChange(current, currentInput, length) {
+    let newState = {};
+
+    typeof current !== "undefined" && (newState.current = current);
+    typeof currentInput !== "undefined" && (newState.currentInput = currentInput);
+
+    newState.length = this.getSliderLength();
+    newState.trackLength = this.calcTrackLengthPx(newState.current, newState.length);
+    newState.popover = {
+      left: this.calcPopoverLeft()
+    };
+
+    this.setState(() => {
+      return newState;
     })
   },
+  calcPopoverLeft(){
+    let leftOffsetDiff = (this.getPopoverContainerLength() - this.getSliderLength()) / 2;
+    let offset = this.state.trackLength + leftOffsetDiff - (this.getPopoverLength() / 2);
+
+    console.log(leftOffsetDiff);
+
+    if (offset < 0) {
+      offset = 0;
+    } else if (offset + this.getPopoverLength() > this.getPopoverContainerLength()) {
+      offset = this.getPopoverContainerLength() - this.getPopoverLength();
+    }
+
+    return offset;
+  },
   componentWillReceiveProps(nextProps) {
-    console.log("componentWillReceiveProps", nextProps);
+
   },
   componentDidMount(){
-    console.log("componentDidMount");
+
   },
   render(){
     return <div className="slider-container">
-      <div>${this.state.min}</div>
-      <Rcslider min={this.state.min}
-                max={this.state.max}
-                value={this.state.current}
-                step={0.01}
-                onChange={this.onSliderChange}
-      />
-      <div className="slider-popover">
-        <span>$</span>
-        <input type="text"
-               onChange={this.onInputChange}
-               onBlur={this.onInputBlur}
-               placeholder={this.state.current}
-               value={this.state.currentInput}/>
-        <button>Checkout now</button>
+      <div className="price pull-left text-left">${this.state.min}</div>
+      <div className="price pull-right text-right">${this.state.max}</div>
+      <div className="rc-slider-wrapper">
+        <Rcslider ref="slider"
+                  min={this.state.min}
+                  max={this.state.max}
+                  value={this.state.current}
+                  step={0.01}
+                  onChange={this.onSliderChange}
+        />
       </div>
-      <div>${this.state.max}</div>
+      <div className="slider-popover-container" ref="popoverContainer">
+        <div className="slider-popover" ref="popover" style={this.state.popover}>
+          <div className="slider-popover-bg">
+            <span className="slider-popover-price">$</span>
+            <input type="text"
+                   className="form-control slider-popover-input"
+                   onChange={this.onInputChange}
+                   onBlur={this.onInputBlur}
+                   placeholder={this.state.current}
+                   value={this.state.currentInput}/>
+            <button className="btn btn-checkout">Checkout now</button>
+          </div>
+          <span className="slider-popover-tip"><i></i>Click the price to type it in manually</span>
+        </div>
+      </div>
     </div>
   }
 });

@@ -12,7 +12,7 @@ import {PromoContainer} from "./components/promo";
 
 // promo initial state
 const promo = {
-  title: "Divine Divinity",
+  title: "Divinity Bundle",
   endDateTime: moment() // unix timestamp of tomorrow in seconds
     .add(2, "day")
     .set("hour", 0)
@@ -114,7 +114,7 @@ const promo = {
     total: 32,
     min: 0.99,
     max: 49.99,
-    current: 7.34
+    current: 17.34
   }
 };
 
@@ -132,5 +132,3 @@ ReactDOM.render(
   </Provider>,
   document.getElementById("app")
 );
-//const store = configureStore(Map());
-//store.dispatch(promoActions.initPromo());

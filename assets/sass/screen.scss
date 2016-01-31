@@ -1,7 +1,138 @@
+@import "compass/css3";
+@import "compass/utilities";
+
 @import "../../node_modules/bootstrap-sass/assets/stylesheets/bootstrap.scss";
+
+@import "variables";
+
+* {
+  font-family: "Open Sans";
+}
+
+*:focus {
+  outline: 0;
+}
 
 body {
   background-image: image-url("bg_tile_102x102.jpg");
   background-repeat: repeat;
+}
+
+.container {
+  max-width: 950px;
+}
+
+.slider-container{
+  height: 170px;
+
+  .rc-slider {
+    height: 14px;
+    @include border-radius(6px);
+    background-color: #cdcdcd;
+    @include box-shadow(0 1px rgba(255,255,255,.75), inset 0 0 1px rgba(0,0,0,.25));
+    border: solid 1px #aaa;
+    @include background-image(linear-gradient(bottom, #cfcfcf, #c2c2c2));
+
+    .rc-slider-track {
+      height: 13px;
+      @include border-radius(6px);
+      background-color: #cdcdcd;
+      @include box-shadow(inset 0 1px rgba(231,255,0,.67), inset 0 0 5px rgba(255,255,190,.26));
+      border: solid 1px #aaa;
+      @include background-image(linear-gradient(bottom, #7ca900, #adc900));
+    }
+
+    .rc-slider-handle {
+      height: 28px;
+      @include border-radius(0 0 7px 6px, 0 0 7px 7px);
+      background-color: #e1e1e1;
+      @include box-shadow(0 1px 3px rgba(0,0,0,.75), inset 0 1px rgba(255,255,255,.75), inset 0 0 2px rgba(255,255,255,.45));
+      border: solid 1px #9d9d9d;
+      @include background-image(linear-gradient(bottom, #d0d0d0, #f2f2f2));
+    }
+  }
+}
+.slider-popover-container {
+  position: relative;
+
+  .slider-popover {
+    display: inline-block;
+    position: absolute;
+
+    .slider-popover-bg {
+      width: 222px;
+      height: 58px;
+      padding: 11px 11px 11px 12px;
+      position: relative;
+      -webkit-border-radius: 4px;
+      -moz-border-radius: 4px;
+      border-radius: 4px;
+      background-color: #c8c8c8;
+      -webkit-box-shadow: 0 1px rgba(255,255,255,.75);
+      -moz-box-shadow: 0 1px rgba(255,255,255,.75);
+      box-shadow: 0 1px rgba(255,255,255,.75);
+      border: solid 1px #b3b3b3;
+      background-image: -webkit-linear-gradient(bottom, #cfcfcf, #c2c2c2);
+      background-image: -moz-linear-gradient(bottom, #cfcfcf, #c2c2c2);
+      background-image: -o-linear-gradient(bottom, #cfcfcf, #c2c2c2);
+      background-image: -ms-linear-gradient(bottom, #cfcfcf, #c2c2c2);
+      background-image: linear-gradient(to top, #cfcfcf, #c2c2c2);
+
+      .slider-popover-price,
+      .slider-popover-input {
+        font-family: $font-family-base;
+        font-size: 25px;
+        font-weight: bold;
+        color: #698c00;
+        text-shadow: 0 1px rgba(255,255,255,.35);
+        vertical-align: top;
+        line-height: 32px;
+      }
+
+      .slider-popover-input {
+        display: inline-block;
+        padding: 0;
+        border: 0;
+        box-shadow: none;
+        background-color: rgba(0, 0, 0, 0);
+        height: 32px;
+        width: 64px;
+        margin-left: 1px;
+        margin-right: 12px;
+        text-align: center;
+      }
+    }
+
+    .slider-popover-tip {
+      font-family: $font-family-base;
+      font-size: 10px;
+      color: #808080;
+    }
+
+    .btn-checkout {
+      position: absolute;
+      top: 11px;
+      right: 11px;
+      font-family: $font-family-base;
+      font-weight: 600;
+      font-size: 13px;
+      color: #03101a;
+      text-shadow: 0 1px rgba(255,255,255,.3);
+      width: 108px;
+      padding: 7px;
+      -webkit-border-radius: 4px;
+      -moz-border-radius: 4px;
+      border-radius: 4px;
+      background-color: #bababa;
+      -webkit-box-shadow: 0 0 1px rgba(0,0,0,.55), 0 1px 2px rgba(0,0,0,.6), inset 0 1px rgba(255,255,255,.5), inset 0 0 1px rgba(255,255,255,.1);
+      -moz-box-shadow: 0 0 1px rgba(0,0,0,.55), 0 1px 2px rgba(0,0,0,.6), inset 0 1px rgba(255,255,255,.5), inset 0 0 1px rgba(255,255,255,.1);
+      box-shadow: 0 0 1px rgba(0,0,0,.55), 0 1px 2px rgba(0,0,0,.6), inset 0 1px rgba(255,255,255,.5), inset 0 0 1px rgba(255,255,255,.1);
+      background-image: -webkit-linear-gradient(bottom, #6c9600 4%, #a6c500);
+      background-image: -moz-linear-gradient(bottom, #6c9600 4%, #a6c500);
+      background-image: -o-linear-gradient(bottom, #6c9600 4%, #a6c500);
+      background-image: -ms-linear-gradient(bottom, #6c9600 4%, #a6c500);
+      background-image: linear-gradient(to top, #6c9600 4%, #a6c500);
+    }
+  }
 }
 

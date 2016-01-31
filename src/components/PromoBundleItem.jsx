@@ -22,7 +22,7 @@ export const PromoBundleItem = React.createClass({
     }).isRequired
   },
   render() {
-    return <div>
+    return <div className="product">
       <div className="product-logo">
 
       </div>

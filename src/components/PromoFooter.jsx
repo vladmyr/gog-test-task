@@ -21,9 +21,13 @@ export const PromoFooter = React.createClass({
     })).isRequired
   },
   render(){
-    return <div>
-      <PromoFooterGoodies {...this.props} />
-      <PromoFooterGoals {...this.props} />
+    return <div className="promo-footer">
+      <div className="col-md-7">
+        <PromoFooterGoodies {...this.props} />
+      </div>
+      <div className="col-md-5">
+        <PromoFooterGoals {...this.props} />
+      </div>
     </div>
   }
 });

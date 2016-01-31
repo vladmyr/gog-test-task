@@ -3,6 +3,8 @@ import React from "react"
 import {PromoBundleItem} from "./PromoBundleItem";
 import {PromoBundleSlider} from "./PromoBundleSlider";
 
+import "./bundle.css";
+
 export const PromoBundle = React.createClass({
   propTypes: {
     items: React.PropTypes.arrayOf(
