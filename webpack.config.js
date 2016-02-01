@@ -11,11 +11,23 @@ module.exports = function(webpackConfig){
   // replace path with absolute one
   webpackConfig.output.path = path.join(__dirname, webpackConfig.output.path);
 
-  // handle regular expressions
   webpackConfig.module.loaders.forEach(function(loader){
+    // handle regular expressions
     loader.test && (loader.test = new RegExp(loader.test));
-    loader.include && (loader.include = new RegExp(loader.exclude));
     loader.exclude && (loader.exclude = new RegExp(loader.exclude));
+
+    // handle include paths
+    if (loader.include){
+      if(Array.isArray(loader.include)){
+        loader.include = loader.include.map(function(include){
+          return path.join(__dirname, include);
+        })
+      } else {
+        loader.include = new RegExp(loader.exclude)
+      }
+    }
+
+    console.log(loader.include);
   });
 
   return {

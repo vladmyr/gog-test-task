@@ -20,7 +20,7 @@ const promo = {
     .set("second", 0)
     .set("millisecond", 0).unix(),
   isTimerEnabled: true,
-  totalSold: 13853,
+  totalSold: 24999,
   features: [{
     icon: "support",
     text: "Support Larian Studio"
@@ -39,7 +39,7 @@ const promo = {
         active: "./img/games/divine_divinity.png",
         inactive: "./img/games/divine_divinity_inactive.png"
       },
-      bg: ""
+      bg: "./img/games/bg_divine_divinity.jpg"
     },
     price: {
       standard: 5.99,
@@ -47,9 +47,11 @@ const promo = {
     },
     languagesAmount: 4,
     goodiesAmount: 4,
-    isUnlocked: true,
+    isUnlocked: false,
     unlock: {
       text: "Below average",
+      textShort: "",
+      hasSliderMark: false,
       includePrice: false
     }
   }, {
@@ -60,7 +62,7 @@ const promo = {
         active: "./img/games/beyond_divinity.png",
         inactive: "./img/games/beyond_divinity_inactive.png"
       },
-      bg: ""
+      bg: "./img/games/bg_beyond_divinity.jpg"
     },
     price: {
       standard: 5.99,
@@ -71,6 +73,8 @@ const promo = {
     isUnlocked: false,
     unlock: {
       text: "Above average",
+      textShort: "Average",
+      hasSliderMark: true,
       includePrice: true
     }
   }, {
@@ -81,17 +85,20 @@ const promo = {
         active: "./img/games/divinity_2.png",
         inactive: "./img/games/divinity_2_inactive.png"
       },
-      bg: ""
+      bg: "./img/games/bg_divinity_2.jpg"
     },
     price: {
       standard: 19.99,
-      promo: 18.31
+      //promo: 18.31
+      promo: 8.31
     },
     languagesAmount: 7,
     goodiesAmount: 9,
     isUnlocked: false,
     unlock: {
       text: "Top supporter",
+      textShort: "Top 10%",
+      hasSliderMark: true,
       includePrice: true
     }
   }],
@@ -122,28 +129,23 @@ const promo = {
   }],
   goals: [{
     amount: 10000,
-    percentage: 0,
-    img: "",
+    img: "./img/goals/goal-thumbnail.jpg",
     description: "... [10000] to unlock exclusive, never before seen, trailer from Divinity: Original Sin"
   }, {
     amount: 25000,
-    percentage: 0,
-    img: "",
+    img: "./img/goals/goal-thumbnail.jpg",
     description: "...[25000] to unlock exclusive, never before seen, trailer from Divinity: Original Sin"
   }, {
     amount: 50000,
-    percentage: 0,
-    img: "",
+    img: "./img/goals/goal-thumbnail.jpg",
     description: "...[50000] to unlock exclusive, never before seen, trailer from Divinity: Original Sin"
   }, {
     amount: 80000,
-    percentage: 0,
-    img: "",
+    img: "./img/goals/goal-thumbnail.jpg",
     description: "...[80000] to unlock exclusive, never before seen, trailer from Divinity: Original Sin"
   }, {
     amount: 120000,
-    percentage: 0,
-    img: "",
+    img: "./img/goals/goal-thumbnail.jpg",
     description: "...[120000] to unlock exclusive, never before seen, trailer from Divinity: Original Sin"
   }],
   goalActiveSlider: 0,

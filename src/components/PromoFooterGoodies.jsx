@@ -4,7 +4,7 @@ export const PromoFooterGoodies = React.createClass({
   render(){
     return <div className="promo-goodies">
       <div className="text-center footer-title-preset">
-        <span>Goodies available for free with {this.props.title}</span>
+        <div><span className="title-span">Goodies available for free with {this.props.title}</span></div>
       </div>
       <ul className="goodies-list list-unstyled list-inline">
         {this.props.goodies.map((item, key) => {

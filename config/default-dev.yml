@@ -10,7 +10,9 @@ webpack:
   module:
     loaders:
       - test: ".jsx?$"
-        exclude: "node_modules"
+        include:
+          - "./src"
+          - "./node_modules/react-circular-progress"
         loader: "react-hot!babel"
       - test: ".css$"
         exclude: "node_modules"

@@ -34,8 +34,13 @@ export const PromoBundle = React.createClass({
     return <div className="bundle-container">
       <div className="product-container">
         {this.props.items.map((item, key) => {
+          let isLast = key === (this.props.items.length - 1);
           return <PromoBundleItem item={item}
                                   key={key}
+                                  isNextUnlocked={isLast
+                                    ? false
+                                    : this.props.items[key + 1].isUnlocked}
+                                  isFirst={key === 0}
                                   isLast={key === (this.props.items.length - 1)} />
         })}
       </div>

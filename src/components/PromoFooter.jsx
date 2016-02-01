@@ -10,7 +10,6 @@ export const PromoFooter = React.createClass({
     goalActiveSlider: React.PropTypes.number.isRequired,
     goals: React.PropTypes.arrayOf(React.PropTypes.shape({
       amount: React.PropTypes.number.isRequired,
-      percentage: React.PropTypes.number.isRequired,
       img: React.PropTypes.string.isRequired,
       description: React.PropTypes.string.isRequired
     })).isRequired,

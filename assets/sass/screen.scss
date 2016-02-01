@@ -2,6 +2,11 @@
 @import "compass/utilities";
 
 @import "../../node_modules/bootstrap-sass/assets/stylesheets/bootstrap.scss";
+@import "../../node_modules/slick-carousel/slick/slick";
+@import "../../node_modules/slick-carousel/slick/slick-theme";
+
+@import "vendors/rc-slider/slider";
+@import "vendors/react-circular-progress/circular-progress";
 
 @import "variables";
 @import "fonts";
@@ -16,7 +21,8 @@
   outline: 0;
 }
 
-body {
+body,
+.promo-footer .footer-title-preset .title-span {
   background-image: image-url("bg_tile_102x102.jpg");
   background-repeat: repeat;
 }

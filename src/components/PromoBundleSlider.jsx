@@ -6,6 +6,25 @@ import Rcslider from "rc-slider";
 export const PromoBundleSlider = React.createClass({
   mixins: [PureRenderMixin],
   propTypes: {
+    items: React.PropTypes.arrayOf(
+      React.PropTypes.shape({
+        title: React.PropTypes.string.isRequired,
+        url: React.PropTypes.string.isRequired,
+        img: React.PropTypes.shape({
+          logo: React.PropTypes.shape({
+            active: React.PropTypes.string.isRequired,
+            inactive: React.PropTypes.string.isRequired
+          })
+        }),
+        price: React.PropTypes.shape({
+          standard: React.PropTypes.number.isRequired,
+          promo: React.PropTypes.number.isRequired
+        }),
+        goodiesAmount: React.PropTypes.number.isRequired,
+        languagesAmount: React.PropTypes.number.isRequired,
+        isUnlocked: React.PropTypes.bool.isRequired
+      }).isRequired
+    ),
     price: React.PropTypes.shape({
       current: React.PropTypes.number.isRequired,
       min: React.PropTypes.number.isRequired,
@@ -26,7 +45,7 @@ export const PromoBundleSlider = React.createClass({
       points: [],
       popover: {
         offsetDiff: 0,
-        left: 0 //this.getPopoverOffset()
+        left: 0
       }
     }
   },
@@ -100,7 +119,7 @@ export const PromoBundleSlider = React.createClass({
 
     self.handlePriceChange(current, self.humanisePrice(current));
   },
-  handlePriceChange(current, currentInput, length) {
+  handlePriceChange(current, currentInput) {
     let newState = {};
 
     typeof current !== "undefined" && (newState.current = current);
@@ -109,18 +128,17 @@ export const PromoBundleSlider = React.createClass({
     newState.length = this.getSliderLength();
     newState.trackLength = this.calcTrackLengthPx(newState.current, newState.length);
     newState.popover = {
-      left: this.calcPopoverLeft()
+      left: this.calcPopoverLeft(newState.trackLength)
     };
 
+    this.props.setPriceCurrent(newState.current);
     this.setState(() => {
       return newState;
     })
   },
-  calcPopoverLeft(){
+  calcPopoverLeft(trackLength){
     let leftOffsetDiff = (this.getPopoverContainerLength() - this.getSliderLength()) / 2;
-    let offset = this.state.trackLength + leftOffsetDiff - (this.getPopoverLength() / 2);
-
-    console.log(leftOffsetDiff);
+    let offset = trackLength + leftOffsetDiff - (this.getPopoverLength() / 2);
 
     if (offset < 0) {
       offset = 0;
@@ -134,7 +152,19 @@ export const PromoBundleSlider = React.createClass({
 
   },
   componentDidMount(){
+    // after first rendering reinitialize slider
+    this.handlePriceChange(this.getSliderValue());
+  },
+  getSliderMarks(){
+    let marks = {};
 
+    this.props.items.forEach(function (item) {
+      if (item.unlock.hasSliderMark) {
+        marks[String(item.price.promo)] = item.unlock.textShort;
+      }
+    });
+
+    return marks;
   },
   render(){
     return <div className="slider-container">
@@ -146,6 +176,8 @@ export const PromoBundleSlider = React.createClass({
                   max={this.state.max}
                   value={this.state.current}
                   step={0.01}
+                  tipFormatter={null}
+                  marks={this.getSliderMarks()}
                   onChange={this.onSliderChange}
         />
       </div>
@@ -159,7 +191,8 @@ export const PromoBundleSlider = React.createClass({
                    onBlur={this.onInputBlur}
                    placeholder={this.state.current}
                    value={this.state.currentInput}/>
-            <button className="btn btn-checkout">Checkout now</button>
+            <button className="btn btn-checkout"
+                    onClick={this.props.bundleCheckout}>Checkout now</button>
           </div>
           <div className="slider-popover-tip">
             <i className="icons-notification icons-notification-info"></i>

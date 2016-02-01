@@ -3,6 +3,7 @@ import {Map, List} from "immutable";
 export const INIT_PROMO = "INIT_PROMO";
 export const SET_PROMO = "SET_PROMO";
 export const SET_PRICE_CURRENT = "SET_PRICE_CURRENT";
+export const BUNDLE_CHECKOUT = "BUNDLE_CHECKOUT";
 export const UPDATE_PROMO_ITEM = "UPDATE_PROMO_ITEM";
 export const UPDATE_SOLD_AMOUNT = "UPDATE_SOLD_AMOUNT";
 export const UI_SLIDER_BTN_CLICK = "UI_SLIDER_BTN_CLICK";
@@ -110,5 +111,15 @@ export function timerCountdown() {
 export function timerPause() {
   return {
     type: TIMER_PAUSE
+  }
+}
+
+/**
+ * Action creator. Handle checkout action
+ * @return {Object}
+ */
+export function bundleCheckout() {
+  return {
+    type: BUNDLE_CHECKOUT
   }
 }

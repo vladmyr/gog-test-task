@@ -24,13 +24,22 @@ export const PromoBundleItem = React.createClass({
         includePrice: React.PropTypes.bool.isRequired
       }).isRequired
     }).isRequired,
-    isLast: React.PropTypes.bool.isRequired
+    isFirst: React.PropTypes.bool.isRequired,
+    isLast: React.PropTypes.bool.isRequired,
+    isNextUnlocked: React.PropTypes.bool.isRequired
+  },
+  getProductBackground(){
+    return {
+      backgroundImage: "url(\"" + this.props.item.img.bg + "\")"
+    }
   },
   render() {
-    return <div className="product">
+    return <div className={"product " + (this.props.isFirst ? "" : "bg-shift-top")} style={this.getProductBackground()}>
       <div className="product-description">
         <div className="product-logo">
-          <img src={this.props.item.img.logo.active} />
+          <img src={this.props.item.isUnlocked
+            ? this.props.item.img.logo.active
+            : this.props.item.img.logo.inactive} />
         </div>
         <div className="product-details">
           <p className="text-center">
@@ -52,7 +61,9 @@ export const PromoBundleItem = React.createClass({
       </div>
       {this.props.isLast
         ? null
-        : <div className="product-plus"></div>}
+        : <div className="product-plus">{this.props.isNextUnlocked
+          ? <i className="icons-plus"></i>
+          : null}</div>}
     </div>
   }
 });
