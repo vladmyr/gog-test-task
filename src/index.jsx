@@ -66,7 +66,8 @@ const promo = {
     },
     price: {
       standard: 5.99,
-      promo: 7.67
+      promo: 1.67
+      //promo: 9.00
     },
     languagesAmount: 4,
     goodiesAmount: 6,
@@ -89,8 +90,8 @@ const promo = {
     },
     price: {
       standard: 19.99,
-      //promo: 18.31
-      promo: 8.31
+      promo: 48.31
+      //promo: 3.98
     },
     languagesAmount: 7,
     goodiesAmount: 9,
@@ -130,7 +131,7 @@ const promo = {
   goals: [{
     amount: 10000,
     img: "./img/goals/goal-thumbnail.jpg",
-    description: "... [10000] to unlock exclusive, never before seen, trailer from Divinity: Original Sin"
+    description: "...[10000] to unlock exclusive, never before seen, trailer from Divinity: Original Sin"
   }, {
     amount: 25000,
     img: "./img/goals/goal-thumbnail.jpg",
@@ -153,7 +154,7 @@ const promo = {
     total: 32,
     min: 0.99,
     max: 49.99,
-    current: 17.34
+    current: 0.99
   }
 };
 

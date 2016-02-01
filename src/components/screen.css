@@ -38,11 +38,12 @@
   box-shadow: inset 0 1px rgba(255,255,255,.45);
   background-color: #e6e6e6;
   border-top: 1px solid #c1c1c1;
-  padding: 40px 30px 28px 30px;
+  padding: 20px 30px 28px 30px;
 }
 
 .slider-container .price {
   width: 50px;
+  margin-top: 20px;
   font-weight: 600;
   font-size: 14px;
   line-height: 14px;
@@ -62,7 +63,24 @@
 
 .slider-container .rc-slider-wrapper {
   margin: 0 50px;
+  position: relative;
 }
+
+.slider-container .marks-container {
+  position: relative;
+  margin: 0px;
+  height: 20px;
+}
+
+.slider-container .marks-container li,
+.slider-container .marks-container .mark-label {
+  position: absolute;
+  font-size: 10px;
+  padding: 0;
+  margin: 0;
+  z-index: 1;
+}
+
 .font-light { font-weight: 300; }
 .font-normal { font-weight: 400; }
 .font-semibold { font-weight: 600; }
@@ -268,7 +286,7 @@
   height: 40px;
   margin-right: 2px;
 
-  font-weight: 700;
+  font-weight: 500;
   color: #fff;
   text-shadow: 0 1px rgba(0,0,0,.35);
 
@@ -435,4 +453,9 @@
   font-size: 25px;
   font-family: "Open Sans";
   font-weight: 700;
+}
+
+.rc-slider-mark span:before,
+.rc-slider-mark span:after {
+  content: " ";
 }

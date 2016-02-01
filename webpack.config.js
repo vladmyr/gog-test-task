@@ -26,8 +26,6 @@ module.exports = function(webpackConfig){
         loader.include = new RegExp(loader.exclude)
       }
     }
-
-    console.log(loader.include);
   });
 
   return {

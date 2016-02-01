@@ -1,16 +1,21 @@
 @import "compass/css3";
 @import "compass/utilities";
 
+// npm dependencies
 @import "../../node_modules/bootstrap-sass/assets/stylesheets/bootstrap.scss";
 @import "../../node_modules/slick-carousel/slick/slick";
 @import "../../node_modules/slick-carousel/slick/slick-theme";
 
+// vendor dependencies
 @import "vendors/rc-slider/slider";
 @import "vendors/react-circular-progress/circular-progress";
 
+// general
 @import "variables";
 @import "fonts";
 @import "sprites";
+
+// components
 
 * {
   font-family: "Open Sans";
