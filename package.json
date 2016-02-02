@@ -4,10 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "build": "",
-    "server": "",
     "dev": "npm run build-dev && npm run server-dev",
-    "compass-watch": "webpack --config webpack.config.dev.js && gulp watch",
     "build-dev": "gulp build && webpack --config webpack.config.dev.js",
     "server-dev": "webpack-dev-server --config webpack.config.dev.js",
     "test": "mocha --compilers js:babel-core/register --require ./test/helper.js \"test/**/*.@(js|jsx)\""

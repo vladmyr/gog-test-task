@@ -30,7 +30,7 @@ export const PromoFooterGoals = React.createClass({
     return this.getInitialStateValues();
   },
   calcIsAccomplished(value, goal) {
-    return value > goal;
+    return value >= goal;
   },
   calcGoalPercentage(value, goal){
     return Math.min(Math.floor(value / goal * 100), 100);

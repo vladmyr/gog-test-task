@@ -1,0 +1,272 @@
+.body {
+  .body__in {
+    margin-top: 45px;
+    margin-bottom: 65px;
+  }
+
+  .bundle {
+    @include border-radius(5px);
+    background-color: #e1e1e1;
+    @include box-shadow(0 1px 3px rgba(0,0,0,.3), inset 0 1px rgba(255,255,255,.5));
+
+    .bundle__product {
+      padding: 0 $bundle-padding;
+    }
+
+    .bundle__product-container {
+      display: inline-block;
+      position: relative;
+      width: $product-width;
+      height: $product-height;
+      background-repeat: no-repeat;
+      background-position-x: right;
+
+      &:last-child {
+        width: $product-description-width;
+      }
+
+      &--bg-shift-top {
+        background-position-y: -30px;
+      }
+
+      @media(max-width: $media-width){
+        display: block;
+        margin: 0 auto;
+      }
+    }
+
+    .bundle__product-description {
+      width: $product-description-width;
+    }
+
+    .bundle__product-logo {
+      height: 155px;
+    }
+
+    .bundle__product-details {
+      border-top: 1px solid $product-details-border-color;
+      border-bottom: 1px solid $product-details-border-color;
+
+      p {
+        font-size: 12px;
+        line-height: 20px;
+        padding: 8px 0;
+        margin: 0;
+      }
+
+      a {
+        color: #333;
+        position: relative;
+        text-decoration: none;
+
+        &:after {
+          content: " ";
+          position: absolute;
+          left: 0;
+          bottom: 0;
+          width: 100%;
+          border: 1px dotted;
+        }
+      }
+    }
+
+    .bundle__product-plus {
+      position: absolute;
+      top: 66px;
+      right: 0;
+    }
+
+    .bundle__product-unlocked {
+      margin-top: 15px;
+
+      &--is-unlocked {
+        color: #608000;
+      }
+
+      i {
+        margin-right: 6px;
+      }
+
+      span {
+        font-size: 12px;
+        line-height: 14px;
+      }
+    }
+
+    .bundle__slider {
+      height: 170px;
+      border-bottom-left-radius: 5px;
+      border-bottom-right-radius: 5px;
+      padding: 20px $bundle-padding 28px $bundle-padding;
+      background-color: #e6e6e6;
+      border-top: 1px solid #c1c1c1;
+      @include border-bottom-radius(5px);
+      @include box-shadow(inset 0 1px rgba(255,255,255,.45));
+
+      .rc-slider {
+        height: 14px;
+        @include border-radius(6px);
+        background-color: #cdcdcd;
+        @include box-shadow(0 1px rgba(255,255,255,.75), inset 0 0 1px rgba(0,0,0,.25));
+        border: solid 1px #aaa;
+        @include background-image(linear-gradient(bottom, #cfcfcf, #c2c2c2));
+
+        .rc-slider-track {
+          height: 13px;
+          @include border-radius(6px);
+          background-color: #cdcdcd;
+          @include box-shadow(inset 0 1px rgba(231,255,0,.67), inset 0 0 5px rgba(255,255,190,.26));
+          border: solid 1px #aaa;
+          @include background-image(linear-gradient(bottom, #7ca900, #adc900));
+        }
+
+        .rc-slider-handle {
+          height: 28px;
+          @include border-radius(0 0 7px 6px, 0 0 7px 7px);
+          background-color: #e1e1e1;
+          @include box-shadow(0 1px 3px rgba(0,0,0,.75), inset 0 1px rgba(255,255,255,.75), inset 0 0 2px rgba(255,255,255,.45));
+          border: solid 1px #9d9d9d;
+          @include background-image(linear-gradient(bottom, #d0d0d0, #f2f2f2));
+        }
+
+        .rc-slider-step {
+          top: 5px;
+        }
+
+        .rc-slider-handle {
+          &:before,
+          &:after {
+            bottom: -6px;
+            left: 50%;
+            border: solid transparent;
+            content: " ";
+            height: 0;
+            width: 0;
+            position: absolute;
+            pointer-events: none;
+          }
+
+          &:after {
+            border-color: rgba(195, 195, 195, 0);
+            border-bottom-color: #c3c3c3;
+            border-width: 8px;
+            margin-left: -8px;
+          }
+
+          &:before {
+            border-color: rgba(179, 179, 179, 0);
+            border-bottom-color: #b3b3b3;
+            border-width: 9px;
+            margin-left: -9px;
+          }
+        }
+
+        .rc-slider-step {
+          .rc-slider-dot {
+            width: 6px;
+            height: 6px;
+            border: 0;
+            @include border-radius(3px);
+            background-color: rgba(0,0,0,.4);
+            @include box-shadow(0 1px rgba(255,255,255,.35), inset 0 0 1px rgba(0,0,0,.75));
+          }
+        }
+      }
+
+      .bundle__slider-price {
+        width: 50px;
+        margin-top: 20px;
+        font-weight: 600;
+        font-size: 14px;
+        line-height: 14px;
+      }
+
+      .bundle__slider-wrapper {
+        margin: 0 50px;
+        position: relative;
+      }
+
+      .bundle__slider-popover-container {
+        position: relative;
+      }
+
+      .bundle__slider-popover {
+        top: 14px;
+        display: inline-block;
+        position: absolute;
+
+        .slider-popover__tip {
+          padding-top: 6px;
+
+          span {
+            padding-left: 5px;
+            font-size: 10px;
+          }
+        }
+      }
+
+      .bundle__slider-popover-bg {
+        width: 222px;
+        height: 58px;
+        padding: 11px 11px 11px 12px;
+        position: relative;
+        border: solid 1px #b3b3b3;
+        @include border-radius(4px);
+        @include box-shadow(0 1px rgba(255,255,255,.75));
+        @include background-image(linear-gradient(bottom, #cfcfcf, #c2c2c2));
+      }
+
+      .bundle__slider-popover-price,
+      .bundle__slider-popover-input {
+        font-size: 25px;
+        font-weight: bold;
+        color: #698c00;
+        text-shadow: 0 1px rgba(255,255,255,.35);
+        vertical-align: top;
+        line-height: 32px;
+      }
+
+      .bundle__slider-popover-input {
+        display: inline-block;
+        padding: 0;
+        border: 0;
+        box-shadow: none;
+        background-color: rgba(0, 0, 0, 0);
+        height: 32px;
+        width: 66px;
+        margin-left: 1px;
+        text-align: center;
+      }
+
+      .bundle__slider-marks {
+        position: relative;
+        margin: 0px;
+        height: 20px;
+
+        .mark-label {
+          position: absolute;
+          font-size: 10px;
+          padding: 0;
+          margin: 0;
+          z-index: 1;
+        }
+      }
+
+      .btn-checkout {
+        position: absolute;
+        top: 11px;
+        right: 11px;
+        font-weight: 600;
+        font-size: 13px;
+        color: #03101a;
+        text-shadow: 0 1px rgba(255,255,255,.3);
+        width: 108px;
+        padding: 7px;
+        @include border-radius(4px);
+        background-color: #bababa;
+        @include box-shadow(0 0 1px rgba(0,0,0,.55), 0 1px 2px rgba(0,0,0,.6), inset 0 1px rgba(255,255,255,.5), inset 0 0 1px rgba(255,255,255,.1));
+        @include background-image(linear-gradient(bottom, #6c9600 4%, #a6c500));
+      }
+    }
+  }
+}

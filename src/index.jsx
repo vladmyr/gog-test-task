@@ -66,7 +66,7 @@ const promo = {
     },
     price: {
       standard: 5.99,
-      promo: 1.67
+      promo: 7.68
       //promo: 9.00
     },
     languagesAmount: 4,
@@ -90,7 +90,7 @@ const promo = {
     },
     price: {
       standard: 19.99,
-      promo: 48.31
+      promo: 18.31
       //promo: 3.98
     },
     languagesAmount: 7,

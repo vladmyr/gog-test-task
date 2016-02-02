@@ -34,26 +34,26 @@ export const PromoBundleItem = React.createClass({
     }
   },
   render() {
-    return <div className={"product " + (this.props.isFirst ? "" : "bg-shift-top")} style={this.getProductBackground()}>
-      <div className="product-description">
-        <div className="product-logo">
+    return <div className={"bundle__product-container " + (this.props.isFirst ? "" : "bundle__product-container--bg-shift-top")} style={this.getProductBackground()}>
+      <div className="bundle__product-description">
+        <div className="bundle__product-logo">
           <img src={this.props.item.isUnlocked
             ? this.props.item.img.logo.active
             : this.props.item.img.logo.inactive} />
         </div>
-        <div className="product-details">
+        <div className="bundle__product-details">
           <p className="text-center">
-            <a className="product-details__link" href="#">{this.props.item.title}</a> (normal price ${this.props.item.price.standard})
+            <span className="font-light"><a className="product-details__link" href="#">{this.props.item.title}</a> (normal price ${this.props.item.price.standard})</span>
             <br/>
-            <strong>with {this.props.item.goodiesAmount} goodies and {this.props.item.languagesAmount} language versions</strong>
+            <span className="font-normal">with {this.props.item.goodiesAmount} goodies and {this.props.item.languagesAmount} language versions</span>
           </p>
         </div>
-        <div className="product-unlocked text-center">
+        <div className="bundle__product-unlocked text-center">
           <i className={"icons-notification " + (this.props.item.isUnlocked ? "icons-notification-success" : "icons-notification-error") }></i>
-          <span className={this.props.item.isUnlocked ? "is-unlocked" : null}>
-            {this.props.item.unlock.text}&nbsp;
+          <span className={this.props.item.isUnlocked ? "bundle__product-unlocked--is-unlocked" : null}>
+            <span className="font-light">{this.props.item.unlock.text}</span>&nbsp;
             {this.props.item.unlock.includePrice
-              ? <strong>(from ${this.props.item.price.promo})</strong>
+              ? <span className="font-normal">(from ${this.props.item.price.promo})</span>
               : null}
 
           </span>
@@ -61,7 +61,7 @@ export const PromoBundleItem = React.createClass({
       </div>
       {this.props.isLast
         ? null
-        : <div className="product-plus">{this.props.isNextUnlocked
+        : <div className="bundle__product-plus">{this.props.isNextUnlocked
           ? <i className="icons-plus"></i>
           : null}</div>}
     </div>

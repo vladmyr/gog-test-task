@@ -77,8 +77,8 @@ export const PromoHeaderTimer = React.createClass({
     this.constructor.timerInit(this);
   },
   render() {
-    return <div className="header-timer">
-      <i className="icons-feature icons-feature-time"></i><span>Only <b>{this.constructor.timerDurationHumanise(this.constructor.getDuration(this))}</b> left</span>
+    return <div className="header-info__timer">
+      <i className="icons-feature icons-feature-time"></i><span className="font-light">Only <span className="font-normal">{this.constructor.timerDurationHumanise(this.constructor.getDuration(this))}</span> left</span>
     </div>
   }
 });

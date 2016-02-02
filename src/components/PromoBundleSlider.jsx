@@ -267,11 +267,11 @@ export const PromoBundleSlider = React.createClass({
   render(){
     let self = this;
 
-    return <div className="slider-container">
-      <div className="price pull-left text-left">${this.state.min}</div>
-      <div className="price pull-right text-right">${this.state.max}</div>
-      <div className="rc-slider-wrapper">
-        <div className="marks-container list-unslyled list-inline" ref="marksContainer">
+    return <div className="bundle__slider slider-container">
+      <div className="bundle__slider-price price pull-left text-left">${this.state.min}</div>
+      <div className="bundle__slider-price price pull-right text-right">${this.state.max}</div>
+      <div className="bundle__slider-wrapper rc-slider-wrapper">
+        <div className="bundle__slider-marks marks-container list-unslyled list-inline" ref="marksContainer">
           {this.state.marks.list.map(function (item, index) {
             return <span className="mark-label" key={index} index={index} style={item.style}>${self.humanisePrice(item.value)} ({item.textShort})</span>
           })}
@@ -286,12 +286,12 @@ export const PromoBundleSlider = React.createClass({
                   onChange={this.onSliderChange}
         />
       </div>
-      <div className="slider-popover-container" ref="popoverContainer">
-        <div className="slider-popover" ref="popover" style={this.state.popover}>
-          <div className="slider-popover-bg">
-            <span className="slider-popover-price">$</span>
+      <div className="bundle__slider-popover-container slider-popover-container" ref="popoverContainer">
+        <div className="bundle__slider-popover slider-popover" ref="popover" style={this.state.popover}>
+          <div className="bundle__slider-popover-bg slider-popover-bg">
+            <span className="bundle__slider-popover-price slider-popover-price">$</span>
             <input type="text"
-                   className="form-control slider-popover-input"
+                   className="form-control bundle__slider-popover-input"
                    onChange={this.onInputChange}
                    onBlur={this.onInputBlur}
                    placeholder={this.state.current}
@@ -300,7 +300,7 @@ export const PromoBundleSlider = React.createClass({
                     onClick={this.props.bundleCheckout}>Checkout now
             </button>
           </div>
-          <div className="slider-popover-tip">
+          <div className="slider-popover__tip">
             <i className="icons-notification icons-notification-info"></i>
             <span>Click the price to type it in manually</span>
           </div>
