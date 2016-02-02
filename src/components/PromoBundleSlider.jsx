@@ -130,10 +130,6 @@ export const PromoBundleSlider = React.createClass({
       left: this.calcPopoverLeft(newState.trackLength)
     };
 
-    // handle marks' label position
-    // TODO: move outside from here
-    //this.calcMarkPosition();
-
     this.props.setPriceCurrent(newState.current);
     this.setState(() => {
       return newState;
@@ -153,6 +149,9 @@ export const PromoBundleSlider = React.createClass({
   },
   componentDidMount(){
     let self = this;
+
+    window.addEventListener('resize', self.handleResize);
+
     // after first rendering reinitialize slider
     self.handlePriceChange(this.getSliderValue());
 
@@ -161,6 +160,9 @@ export const PromoBundleSlider = React.createClass({
         marks: self.calcSliderMarks()
       }
     })
+  },
+  componentWillUnmount(){
+    window.removeEventListener('resize', this.handleResize);
   },
   /** get initial state of slider marks */
   getSliderMarks(){
@@ -254,15 +256,16 @@ export const PromoBundleSlider = React.createClass({
 
     return marks;
   },
-  updateComponentState(){
+  handleResize: function(e) {
     let self = this;
-    let newState = _.extend({}, this.state, {
-      marks: self.getSliderMarks()
-    });
+    // after window resize reinitialize slider
+    this.handlePriceChange(this.getSliderValue());
 
     self.setState(() => {
-      return newState
-    });
+      return {
+        marks: self.calcSliderMarks()
+      }
+    })
   },
   render(){
     let self = this;

@@ -24,12 +24,12 @@ export const PromoHeader = React.createClass({
         <h3 className="header__title text-center font-light">Pay what you want for the <span className="font-normal">{this.props.title}</span> (${this.props.price.total} value!)</h3>
       </div>
       <div className="header-info">
+        <PromoHeaderTimer {...this.props} />
         <ul className="header-info__feature list-unstyled list-inline">
           {this.props.features.map((item, key) => {
             return <li key={key}><i className={"font-light icons-feature icons-feature-" + item.icon}></i>{item.text}</li>
           })}
         </ul>
-        <PromoHeaderTimer {...this.props} />
       </div>
     </div>
   }

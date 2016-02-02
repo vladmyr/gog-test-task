@@ -51,8 +51,8 @@
       }
 
       @media(max-width: $screen-xs){
-        display: block;
-        position: relative;
+        position: initial;
+        margin: 0 15px;
       }
     }
   }

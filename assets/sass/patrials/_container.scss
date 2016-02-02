@@ -1,4 +1,11 @@
 .promo-container {
   max-width: $container-max-width;
   margin: 0 auto;
+
+  @media (min-width: $screen-sm-min) {
+    width: $container-sm;
+  }
+  @media (min-width: $media-width + 1) {
+    width: $container-md;
+  }
 }

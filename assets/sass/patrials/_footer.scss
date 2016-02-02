@@ -45,6 +45,10 @@
   }
 
   .promo-goals {
+    clear: both;
+    max-width: 364px;
+    margin: 0 auto;
+
     .promo-goals-counter {
       text-align: center;
       margin: 20px 0;
@@ -104,6 +108,10 @@
 
     .promo-goals-slider {
       margin: 0 25px;
+
+      @media(max-width: $screen-xs){
+        margin: 0 $xs-offset;
+      }
 
       .thumbnail-navigation {
         margin: 0 14px;
