@@ -9,9 +9,9 @@ Web application constists only of the front-end part. It is build using:
 - Compass stylesheet authoring environment
 - Gulp and webpack as building automation tools
 - Various of different libraries. Worth to mention:
-	- (rc-slider)[https://github.com/react-component/slider] - slider
-	- (react-circular-progress)[https://github.com/wmartins/react-circular-progress] - circular progress bar
-	- (react-slick)[https://github.com/akiran/react-slick] - carousel
+	- [rc-slider](https://github.com/react-component/slider) - slider
+	- [react-circular-progress](https://github.com/wmartins/react-circular-progress) - circular progress bar
+	- [react-slick](https://github.com/akiran/react-slick) - carousel
 
 ### Developer's notes ###
 #### Pre-requirements ####
