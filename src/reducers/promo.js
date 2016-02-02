@@ -74,7 +74,8 @@ function setPriceCurrent(state = Map(), value = 0){
 
 /**
  * Update unlocked items from promo bundle
- * @param state
+ * @param   {Immutable.Map} state
+ * @returns {Immutable.Map} state
  */
 function updateUnlockedItems(state = Map()) {
   let current = state.getIn(["promo", "price", "current"]);
@@ -84,6 +85,11 @@ function updateUnlockedItems(state = Map()) {
   }, state);
 }
 
+/**
+ * User checkout action handler
+ * @param   {Immutable.Map} state
+ * @returns {Immutable.Map} state
+ */
 function bundleCheckout(state) {
   let current = state.getIn(["promo", "price", "current"]);
   let amount = 0;
@@ -99,13 +105,14 @@ function bundleCheckout(state) {
   })
 }
 
+/**
+ * Start / resume timer
+ * @param   {Immutable.Map} state
+ * @param   {Boolean}       toggle
+ * @returns {Immutable.Map}
+ */
 function toggleTimer(state = Map(), toggle) {
   return state.setIn(["promo", "isTimerEnabled"], toggle);
-}
-
-function log(state) {
-  console.warn("#### STATE ####\n", state.toJS());
-  return state;
 }
 
 /**
@@ -115,24 +122,22 @@ function log(state) {
  * @returns {Immutable.Map}
  */
 export default (state = Map(), action = {}) => {
-  console.warn("#### ACTION ####\n", action);
-
   switch(action.type){
     case promoActions.INIT_PROMO:
-      return log(updateUnlockedItems(initPromo(state)));
+      return updateUnlockedItems(initPromo(state));
     case promoActions.SET_PROMO:
-      return log(updateUnlockedItems(setPromo(state, action.promo)));
+      return updateUnlockedItems(setPromo(state, action.promo));
     case promoActions.SET_PRICE_CURRENT:
-      return log(updateUnlockedItems(setPriceCurrent(state, action.value)));
+      return updateUnlockedItems(setPriceCurrent(state, action.value));
     case promoActions.UPDATE_PROMO_ITEM:
-      return log(updatePromoItem(state, action.index, action.item));
+      return updatePromoItem(state, action.index, action.item);
     case promoActions.TIMER_COUNTDOWN:
-      return log(toggleTimer(state, true));
+      return toggleTimer(state, true);
     case promoActions.TIMER_PAUSE:
-      return log(toggleTimer(state, false));
+      return toggleTimer(state, false);
     case promoActions.BUNDLE_CHECKOUT:
-      return log(bundleCheckout(state));
+      return bundleCheckout(state);
     default:
-      return log(state, action);
+      return state;
   }
 }

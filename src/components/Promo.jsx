@@ -7,9 +7,6 @@ import {PromoBundle} from "./PromoBundle";
 import {PromoFooter} from "./PromoFooter";
 
 export const Promo = React.createClass({
-  componentDidMount(){
-    console.log("### Promo.props ###\n", this.props, promoActions);
-  },
   render() {
     return <div className="promo-container">
       <PromoHeader {...this.props} />
