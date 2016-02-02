@@ -1,14 +1,14 @@
 ## GOG.com home assignment ##
 #### Description ####
-This is a resut of a test task provided by [GOG.com](http://www.gog.com/) as a part of a requitment process.
+This is a resut of a test task provided by [GOG.com](http://www.gog.com/) as a part of a recruitment process.
 
 ### Technological stack ###
-Web application constists only of the front-end part. It is build using:
+Web application constists only of the front-end part. It is built using:
 - React as a view layer
 - Redux for handling state
 - Compass stylesheet authoring environment
 - Gulp and webpack as building automation tools
-- Various of different libraries. Worth to mention:
+- Various libraries. Worth to mention:
 	- [rc-slider](https://github.com/react-component/slider) - slider
 	- [react-circular-progress](https://github.com/wmartins/react-circular-progress) - circular progress bar
 	- [react-slick](https://github.com/akiran/react-slick) - carousel
